@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<h1>Deployments</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<a class="btn btn-default btn-primary" href="{% url 'deployment:new_deployment' %}">Create New Deployment</a>
+		</div>
+	</div>
+	{% if queued %}
+	<div class="row">
+		<div class="col-md-12">
+			<h2>Queued</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3">
+			<strong>Name</strong>
+		</div>
+		<div class="col-md-3">
+			<strong>Requester</strong>
+		</div>
+		<div class="col-md-3">
+			<strong>Requested Date</strong>
+		</div>
+		<div class="col-md-3">
+			<strong>Deployment Type</strong>
+		</div>
+	</div>
+	{% for items in queued %}
+	<div class="row">
+		<div class="col-md-3">
+			{{ items.name }}
+		</div>
+		<div class="col-md-3">
+			{% if items.requester %}
+			{{ items.requester.last_name }}, {{ items.requester.first_name }}
+			{% endif %}
+		</div>
+		<div class="col-md-3">
+			{{ items.requested_date }}
+		</div>
+		<div class="col-md-3">
+			{{ items.deployment_type }}
+		</div>
+	</div>
+	{% endfor %}
+	{% endif %}
+
+	{% if active %}
+	<div class="row">
+		<div class="col-md-12">
+			<h2>Active</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3">
+			<strong>Name</strong>
+		</div>
+		<div class="col-md-3">
+			<strong>Requester</strong>
+		</div>
+		<div class="col-md-3">
+			<strong>Requested Date</strong>
+		</div>
+		<div class="col-md-3">
+			<strong>Deployment Type</strong>
+		</div>
+	</div>
+	{% for items in Active %}
+	<div class="row">
+		<div class="col-md-3">
+			{{ items.name }}
+		</div>
+		<div class="col-md-3">
+			{% if items.requester %}
+			{{ items.requester.last_name }}, {{ items.requester.first_name }}
+			{% endif %}
+		</div>
+		<div class="col-md-3">
+			{{ items.requested_date }}
+		</div>
+		<div class="col-md-3">
+			{{ items.deployment_type }}
+		</div>
+	</div>
+	{% endfor %}
+	{% endif %}
+
+	{% if failed %}
+	<div class="row">
+		<div class="col-md-12">
+			<h2>Failed</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3">
+			<strong>Name</strong>
+		</div>
+		<div class="col-md-3">
+			<strong>Requester</strong>
+		</div>
+		<div class="col-md-3">
+			<strong>Requested Date</strong>
+		</div>
+		<div class="col-md-3">
+			<strong>Deployment Type</strong>
+		</div>
+	</div>
+	{% for items in failed %}
+	<div class="row">
+		<div class="col-md-3">
+			{{ items.name }}
+		</div>
+		<div class="col-md-3">
+			{% if items.requester %}
+			{{ items.requester.last_name }}, {{ items.requester.first_name }}
+			{% endif %}
+		</div>
+		<div class="col-md-3">
+			{{ items.requested_date }}
+		</div>
+		<div class="col-md-3">
+			{{ items.deployment_type }}
+		</div>
+	</div>
+	{% endfor %}
+	{% endif %}
+
+	{% if success %}
+	<div class="row">
+		<div class="col-md-12">
+			<h2>Success</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3">
+			<strong>Name</strong>
+		</div>
+		<div class="col-md-3">
+			<strong>Requester</strong>
+		</div>
+		<div class="col-md-3">
+			<strong>Requested Date</strong>
+		</div>
+		<div class="col-md-3">
+			<strong>Deployment Type</strong>
+		</div>
+	</div>
+	{% for items in success %}
+	<div class="row">
+		<div class="col-md-3">
+			{{ items.name }}
+		</div>
+		<div class="col-md-3">
+			{% if items.requester %}
+			{{ items.requester.last_name }}, {{ items.requester.first_name }}
+			{% endif %}
+		</div>
+		<div class="col-md-3">
+			{{ items.requested_date }}
+		</div>
+		<div class="col-md-3">
+			{{ items.deployment_type }}
+		</div>
+	</div>
+	{% endfor %}
+	{% endif %}
+</div>
+{% endblock content %}

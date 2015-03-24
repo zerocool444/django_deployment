@@ -1,0 +1,40 @@
+{% load breadcrumbs %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Deployment Management</title>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+	{% block styles %}
+	{% endblock styles %}
+</head>
+<body>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header"><a href="" class="navbar-brand">Deployment Management</a></div>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li class=""><a href="{% url 'deployment:index' %}">Deployments</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div>
+		<ol class="breadcrumb">
+			<li>{% breadcrumb_url 'Home' 'deployment:index' %}</li>
+			{% block breadcrumbs %}
+			{% endblock breadcrumbs %}
+		</ol>
+	</div>
+
+	{% block content %}
+	
+	{% endblock content %}
+	<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	{% block scripts %}
+	{% endblock scripts %}
+</body>
+</html>

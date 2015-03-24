@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% load breadcrumbs %}
+{% block breadcrumbs %}
+	<li>{% breadcrumb_url 'New Deployment' 'deployment:new_deployment' %}</li>
+{% endblock breadcrumbs %}
+{% block content %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<h1>New Deployment</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<form action="" method="POST">
+				{% csrf_token %}
+				{% for field in form %}
+				<div class="form-group">
+					{{ field.label_tag }}
+					{{ field|add_class:"form-control" }}					
+				</div>
+				{% if field.errors %}
+				<div class="alert alert-danger">
+					{{ field.errors|striptags }}
+				</div>
+				{% endif %}
+				{% endfor %}					
+			</table>
+			<div>	
+				<br/>
+				<button type="submit" class="btn btn-primary">Submit</button>&nbsp;
+				<button type="Reset" class="btn btn-primary">Reset</button>&nbsp;
+				<a href="{% url 'deployment:index' %}" class="btn btn-primary">Back</a>
+			</div>
+		</form>
+	</div>
+</div>
+</div>
+{% endblock %}

@@ -1,1 +1,2 @@
 django_deployment/settings_local.py
+*.pyc
