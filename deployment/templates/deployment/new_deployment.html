@@ -13,7 +13,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-12">
-			<form action="" method="POST">
+			<form action="" method="POST" enctype="multipart/form-data">
 				{% csrf_token %}
 				{% for field in form %}
 				<div class="form-group">
@@ -31,7 +31,7 @@
 				<br/>
 				<button type="submit" class="btn btn-primary">Submit</button>&nbsp;
 				<button type="Reset" class="btn btn-primary">Reset</button>&nbsp;
-				<a href="{% url 'deployment:index' %}" class="btn btn-primary">Back</a>
+				<a href="{% url 'deployment:index' %}" class="btn btn-primary">Back </a>
 			</div>
 		</form>
 	</div>

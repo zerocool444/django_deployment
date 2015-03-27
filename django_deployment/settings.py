@@ -56,4 +56,12 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
 )
 
+FILE_EXTENSION_WHITELIST = [
+    '.zip',
+    '.tar',
+    '.gz',
+]
+
+MEDIA_URL = '/media/'
+
 from settings_local import *

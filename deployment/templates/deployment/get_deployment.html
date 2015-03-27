@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-6">			
+			<div class="container">
+				<div class="row">
+					<div class="col-md-2"><strong>Name:</strong></div>
+					<div class="col-md-2">{{ deployment.name }}</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2"><strong>Deployment File:</strong></div>
+					<div class="col-md-2">{% if deployment.deployment_file %}{{ deployment.deployment_file }}{% else %}No File Available{% endif %}</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2"><strong>Status:</strong></div>
+					<div class="col-md-2">{{ deployment.status }}</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2"><strong>Requester:</strong></div>
+					<div class="col-md-2">{{ deployment.requester.last_name }}, {{ deployment.requester.first_name }}</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2"><strong>Requested Date:</strong></div>
+					<div class="col-md-2">{{ deployment.requested_date }}</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2"><strong>Creator:</strong></div>
+					<div class="col-md-2">{{ deployment.creator.last_name }}, {{ deployment.creator.first_name }}</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2"><strong>Create Date:</strong></div>
+					<div class="col-md-2">{{ deployment.create_date }}</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			{% for deployment_log in deployment_logs %}
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						{{ deployment_log.log_information }}
+					</div>	
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+{% endblock content %}

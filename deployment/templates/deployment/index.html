@@ -34,7 +34,7 @@
 	{% for items in queued %}
 	<div class="row">
 		<div class="col-md-3">
-			{{ items.name }}
+			<a href="{% url 'deployment:get_deployment' items.id %}">{{ items.name }}</a>
 		</div>
 		<div class="col-md-3">
 			{% if items.requester %}

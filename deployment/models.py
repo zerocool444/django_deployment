@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from .validators import validate_file_extension
 
 
 class Status(models.Model):
@@ -7,10 +8,11 @@ class Status(models.Model):
     description = models.CharField(max_length=200)
 
     class Meta:
-        verbose_name_plural='Status'
+        verbose_name_plural = 'Status'
 
     def __str__(self):
         return self.name
+
 
 class DeploymentType(models.Model):
     name = models.CharField(max_length=200)
@@ -19,9 +21,10 @@ class DeploymentType(models.Model):
     def __str__(self):
         return self.name
 
+
 class Deployment(models.Model):
     name = models.CharField(max_length=200)
-    deployment_file = models.FileField(blank=True)
+    deployment_file = models.FileField(null=True, blank=True, upload_to='deployment_files', validators=[validate_file_extension])
     status = models.ForeignKey(Status, editable=False)
     requester = models.ForeignKey(User, related_name='requester')
     creator = models.ForeignKey(User, related_name='creator', editable=False)
@@ -32,11 +35,13 @@ class Deployment(models.Model):
     def __str__(self):
         return self.name
 
+
 class DeploymentStep(models.Model):
     name = models.CharField(max_length=200)
 
     def __str__(self):
         return self.name
+
 
 class DeploymentLog(models.Model):
     deployment = models.ForeignKey(Deployment)
@@ -46,7 +51,7 @@ class DeploymentLog(models.Model):
     deployment_step = models.ForeignKey(DeploymentStep)
 
     def __str__(self):
-        return self.deployment
+        return self.deployment.name
 
 
 class DeploymentConfiguration(models.Model):
