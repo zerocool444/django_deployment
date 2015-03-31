@@ -1,2 +1,4 @@
 django_deployment/settings_local.py
 *.pyc
+deployment_files/
+test/
